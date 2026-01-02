@@ -1,0 +1,19 @@
+## Interface: 11508
+## Title: |cff00ff00Epic|r|cffffd700Loot|r|cffff00ffFeed|r
+## Notes: Modulares Loot-Popup System - 8 Designs inkl. Epic!
+## Author: Claude
+## Version: 5.3.1
+## SavedVariables: EpicLootFeedDB
+
+# Core System
+Core.lua
+
+# Designs - Einfach neue hinzufügen!
+Designs/Classic.lua
+Designs/Ornate.lua
+Designs/Looti.lua
+Designs/Fire.lua
+Designs/Frost.lua
+Designs/Void.lua
+Designs/Minimal.lua
+Designs/Epic.lua
