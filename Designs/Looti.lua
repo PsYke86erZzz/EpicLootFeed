@@ -59,7 +59,7 @@ local function CreateRow()
     return row
 end
 
-local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney)
+local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, looterName, customLabel)
     row.icon:SetTexture(iconTex or "Interface\\Icons\\INV_Misc_QuestionMark")
     row.colorBar:SetVertexColor(color.r, color.g, color.b, 1)
     row:SetBackdropBorderColor(color.r * 0.5, color.g * 0.5, color.b * 0.5, 0.8)
@@ -69,8 +69,16 @@ local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney)
         countStr = " x" .. count
     end
     
-    local nameText = string.format("|cff%02x%02x%02x%s%s|r", 
-        color.r * 255, color.g * 255, color.b * 255, name or "Unbekannt", countStr)
+    -- Kompakt: Zeige Label vor Item wenn vorhanden
+    local prefix = ""
+    if customLabel then
+        prefix = customLabel .. ": "
+    elseif looterName then
+        prefix = looterName .. ": "
+    end
+    
+    local nameText = string.format("|cff%02x%02x%02x%s%s%s|r", 
+        color.r * 255, color.g * 255, color.b * 255, prefix, name or "Unbekannt", countStr)
     row.itemName:SetText(nameText)
 end
 

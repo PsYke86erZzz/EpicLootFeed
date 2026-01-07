@@ -4,6 +4,75 @@
 
 ## 🇬🇧 English
 
+### v5.6.1 (2026-01-02)
+**Bug Fixes:**
+- Fixed "Post erhalten" showing incorrectly for group loot gold share
+- Fixed variable scope issue with merchantOpen
+- Added "Anteil erhalten" label for group gold distribution
+- Improved context detection for mailbox vs. normal loot
+
+**Complete Label Overview:**
+| Context | Label |
+|---------|-------|
+| Normal loot | "Du hast erhalten" |
+| Group member loots | "Spielername erhält" |
+| Roll won (you) | "Gewonnen" |
+| Roll won (other) | "Spielername - Gewonnen" |
+| Mailbox item | "Post erhalten" |
+| Quest reward | "Erhalten" |
+| Sell to vendor | "Verkauft" |
+| Buy from vendor | "Gekauft" |
+| Group gold share | "Anteil erhalten" |
+| Mail gold | "Post erhalten" |
+| Postage | "Porto bezahlt" |
+| Other spending | "Ausgegeben" |
+
+---
+
+### v5.6.0 (2026-01-02)
+**New Features:**
+- **Mailbox Support**: Items from mailbox now show with "Post erhalten" label
+- **Mail Money**: Gold from mail shows "(Post)" source
+- **Postage Tracking**: Sending mail costs show as "Porto bezahlt"
+- **Roll Won Label**: Won items now show "Gewonnen" instead of generic label
+
+**Labels:**
+| Action | Label |
+|--------|-------|
+| Loot item | "Du hast erhalten" |
+| Group loot | "Spielername erhält" |
+| Won roll | "Gewonnen" |
+| Mailbox item | "Post erhalten" |
+| Sell to vendor | "Verkauft" |
+| Buy from vendor | "Gekauft" |
+| Mail gold received | "Post erhalten" |
+| Postage paid | "Porto bezahlt" |
+
+---
+
+### v5.5.0 (2026-01-02)
+**New Features:**
+- **Buy/Sell Tracking**: Shows gold gained when selling items to vendors
+- **Purchase Display**: Shows gold spent when buying from vendors
+- Green "+5g 20s" popup when selling
+- Red "-2g 50s" popup when buying
+- Source indicator "(Verkauf)" or "(Kauf)" when at merchant
+
+---
+
+### v5.4.0 (2026-01-02)
+**Bug Fixes:**
+- **Fixed Roll Spam**: Items being rolled on no longer appear 3-4 times
+- **Whitelist Approach**: Only valid loot messages are now shown:
+  - "Ihr erhaltet Beute:" (you looted)
+  - "Spielername erhält Beute:" (group member looted)
+  - "Ihr habt gewonnen:" (you won roll)
+  - "Spielername gewinnt:" (group member won roll)
+- All roll messages (würfelt, Bedarf, Gier, gepasst) are now properly ignored
+- **Improved Group Loot Detection**: Better extraction of player names
+
+---
+
 ### v5.3.0 (2026-01-01)
 **New Features:**
 - **Group Loot Display**: Shows when party/raid members loot items
@@ -84,6 +153,75 @@
 ---
 
 ## 🇩🇪 Deutsch
+
+### v5.6.1 (2026-01-02)
+**Fehlerbehebungen:**
+- "Post erhalten" wird nicht mehr fälschlich bei Gruppen-Gold-Aufteilung angezeigt
+- Variable Scope Problem mit merchantOpen behoben
+- "Anteil erhalten" Label für Gruppen-Gold-Verteilung hinzugefügt
+- Verbesserte Kontext-Erkennung für Briefkasten vs. normaler Loot
+
+**Komplette Label-Übersicht:**
+| Kontext | Label |
+|---------|-------|
+| Normaler Loot | "Du hast erhalten" |
+| Gruppenmitglied lootet | "Spielername erhält" |
+| Roll gewonnen (du) | "Gewonnen" |
+| Roll gewonnen (andere) | "Spielername - Gewonnen" |
+| Briefkasten-Item | "Post erhalten" |
+| Quest-Belohnung | "Erhalten" |
+| An Händler verkaufen | "Verkauft" |
+| Von Händler kaufen | "Gekauft" |
+| Gruppen-Gold-Anteil | "Anteil erhalten" |
+| Post-Gold | "Post erhalten" |
+| Porto | "Porto bezahlt" |
+| Sonstige Ausgaben | "Ausgegeben" |
+
+---
+
+### v5.6.0 (2026-01-02)
+**Neue Features:**
+- **Briefkasten-Unterstützung**: Items aus dem Briefkasten zeigen "Post erhalten" Label
+- **Post-Geld**: Gold aus Post zeigt "(Post)" als Quelle
+- **Porto-Tracking**: Porto-Kosten werden als "Porto bezahlt" angezeigt
+- **Gewonnen-Label**: Gewürfelte Items zeigen "Gewonnen" statt Standard-Label
+
+**Labels:**
+| Aktion | Label |
+|--------|-------|
+| Item looten | "Du hast erhalten" |
+| Gruppen-Loot | "Spielername erhält" |
+| Roll gewonnen | "Gewonnen" |
+| Briefkasten-Item | "Post erhalten" |
+| An Händler verkaufen | "Verkauft" |
+| Von Händler kaufen | "Gekauft" |
+| Post-Gold erhalten | "Post erhalten" |
+| Porto bezahlt | "Porto bezahlt" |
+
+---
+
+### v5.5.0 (2026-01-02)
+**Neue Features:**
+- **Kauf/Verkauf-Tracking**: Zeigt Gold-Gewinn beim Verkaufen an Händler
+- **Kauf-Anzeige**: Zeigt ausgegebenes Gold beim Kaufen
+- Grünes "+5g 20s" Popup beim Verkaufen
+- Rotes "-2g 50s" Popup beim Kaufen
+- Quell-Anzeige "(Verkauf)" oder "(Kauf)" bei Händlern
+
+---
+
+### v5.4.0 (2026-01-02)
+**Fehlerbehebungen:**
+- **Roll-Spam behoben**: Items beim Würfeln erscheinen nicht mehr 3-4 mal
+- **Whitelist-Ansatz**: Nur gültige Loot-Nachrichten werden angezeigt:
+  - "Ihr erhaltet Beute:" (du hast gelooted)
+  - "Spielername erhält Beute:" (Gruppenmitglied hat gelooted)
+  - "Ihr habt gewonnen:" (du hast Roll gewonnen)
+  - "Spielername gewinnt:" (Gruppenmitglied hat Roll gewonnen)
+- Alle Roll-Nachrichten (würfelt, Bedarf, Gier, gepasst) werden jetzt ignoriert
+- **Verbesserte Gruppen-Loot Erkennung**: Bessere Extraktion von Spielernamen
+
+---
 
 ### v5.3.0 (2026-01-01)
 **Neue Features:**

@@ -117,11 +117,18 @@ local function CreateRow()
     return row
 end
 
-local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney)
+local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, looterName, customLabel)
     row.icon:SetTexture(iconTex or "Interface\\Icons\\INV_Misc_QuestionMark")
     row.iconFrame:SetBackdropBorderColor(color.r, color.g, color.b, 1)
     
-    row.header:SetText("Du hast erhalten")
+    -- Label Text
+    local labelText = "Du erhältst"
+    if customLabel then
+        labelText = customLabel
+    elseif looterName then
+        labelText = looterName .. " erhält"
+    end
+    row.header:SetText(labelText)
     
     local nameText = string.format("|cff%02x%02x%02x%s|r", 
         color.r * 255, color.g * 255, color.b * 255, name or "Unbekannt")

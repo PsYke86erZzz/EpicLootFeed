@@ -89,12 +89,12 @@ local function CreateRow()
     count:SetJustifyH("RIGHT")
     row.count = count
     
-    -- "Du hast erhalten" Label (oben)
+    -- "Du erhältst" Label (oben)
     local label = row:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     label:SetSize(180, 16)
     label:SetPoint("TOPLEFT", iconAnchor, "TOPRIGHT", 10, 2)
     label:SetJustifyH("LEFT")
-    label:SetText("Du hast erhalten")
+    label:SetText("Du erhältst")
     row.label = label
     
     -- Item Name (mehr mittig)
@@ -129,12 +129,15 @@ local function CreateRow()
     return row
 end
 
-local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, looterName)
+local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, looterName, customLabel)
     row.quality = quality
     
-    -- Label Text basierend auf wer gelooted hat
-    local labelText = "Du hast erhalten"
-    if looterName then
+    -- Label Text basierend auf customLabel, looterName, oder default
+    local labelText = "Du erhältst"
+    if customLabel then
+        -- Custom Label hat Priorität (z.B. "Verkauft", "Gekauft", "Ausgegeben")
+        labelText = customLabel
+    elseif looterName then
         -- Kürze Namen wenn zu lang
         local shortName = looterName:len() > 12 and looterName:sub(1, 10) .. ".." or looterName
         labelText = shortName .. " erhält"
@@ -155,10 +158,14 @@ local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, lo
         row.iconAnchor:SetPoint("LEFT", 30, 0)
         
         -- Legendary Sound
-        PlaySoundFile(SOUNDS.LEGENDARY, "Master")
+        if ELF.db and ELF.db.playSounds then
+            PlaySoundFile(SOUNDS.LEGENDARY, "Master")
+        end
         
         -- Label für Legendary (oben)
-        if looterName then
+        if customLabel then
+            row.label:SetText("|cffff8000" .. customLabel .. "|r")
+        elseif looterName then
             local shortName = looterName:len() > 10 and looterName:sub(1, 8) .. ".." or looterName
             row.label:SetText("|cffff8000" .. shortName .. " → Legendär!|r")
         else
@@ -204,7 +211,9 @@ local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, lo
         row.glow:SetAlpha(0)
         
         -- Epic Sound
-        PlaySoundFile(SOUNDS.EPIC, "Master")
+        if ELF.db and ELF.db.playSounds then
+            PlaySoundFile(SOUNDS.EPIC, "Master")
+        end
     else
         -- Normal
         row.bg:Show()
@@ -225,7 +234,7 @@ local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, lo
         row.glow:SetAlpha(0)
         
         -- Lesser Sound für Rare
-        if quality >= 3 then
+        if quality >= 3 and ELF.db and ELF.db.playSounds then
             PlaySoundFile(SOUNDS.LESSER, "Master")
         end
     end

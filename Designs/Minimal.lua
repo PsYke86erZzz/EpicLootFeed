@@ -7,25 +7,25 @@ local _, ELF = ...
 
 local function CreateRow()
     local row = CreateFrame("Frame", nil, UIParent)
-    row:SetSize(300, 24)
+    row:SetSize(350, 28)
     row:SetFrameStrata("HIGH")
     row:SetFrameLevel(100)
     
-    -- Icon (small)
+    -- Icon
     local icon = row:CreateTexture(nil, "ARTWORK")
-    icon:SetSize(22, 22)
-    icon:SetPoint("LEFT", 0, 0)
+    icon:SetSize(24, 24)
+    icon:SetPoint("LEFT", 4, 0)
     icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
     row.icon = icon
     
-    -- Item name with shadow
+    -- Item name - saubere Schrift ohne dicken Rand
     local itemName = row:CreateFontString(nil, "OVERLAY")
-    itemName:SetFont("Fonts\\FRIZQT__.TTF", 14, "OUTLINE")
+    itemName:SetFont("Fonts\\FRIZQT__.TTF", 13, "")
     itemName:SetPoint("LEFT", icon, "RIGHT", 6, 0)
-    itemName:SetPoint("RIGHT", row, "RIGHT", 0, 0)
+    itemName:SetPoint("RIGHT", row, "RIGHT", -4, 0)
     itemName:SetJustifyH("LEFT")
-    itemName:SetShadowOffset(2, -2)
-    itemName:SetShadowColor(0, 0, 0, 1)
+    itemName:SetShadowOffset(1, -1)
+    itemName:SetShadowColor(0, 0, 0, 0.8)
     row.itemName = itemName
     
     -- Tooltip
@@ -43,7 +43,7 @@ local function CreateRow()
     return row
 end
 
-local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney)
+local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney, looterName, customLabel)
     row.icon:SetTexture(iconTex or "Interface\\Icons\\INV_Misc_QuestionMark")
     
     local countStr = ""
@@ -51,14 +51,22 @@ local function ApplyStyle(row, iconTex, name, count, quality, color, isMoney)
         countStr = " x" .. count
     end
     
-    local nameText = string.format("|cff%02x%02x%02x[%s]%s|r", 
-        color.r * 255, color.g * 255, color.b * 255, name or "Unbekannt", countStr)
+    -- Prefix für Label
+    local prefix = ""
+    if customLabel then
+        prefix = "|cffcccccc" .. customLabel .. ":|r "
+    elseif looterName then
+        prefix = "|cffffcc00" .. looterName .. " erhält:|r "
+    end
+    
+    local nameText = string.format("%s|cff%02x%02x%02x%s|r%s", 
+        prefix, color.r * 255, color.g * 255, color.b * 255, name or "Unbekannt", countStr)
     row.itemName:SetText(nameText)
 end
 
 ELF:RegisterDesign(7, {
     name = "Minimal",
-    description = "Nur Text (MSBT Style)",
+    description = "Schwebender Text",
     CreateRow = CreateRow,
     ApplyStyle = ApplyStyle,
 })

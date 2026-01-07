@@ -1,8 +1,8 @@
 ## Interface: 11508
 ## Title: |cff00ff00Epic|r|cffffd700Loot|r|cffff00ffFeed|r
-## Notes: Modulares Loot-Popup System - 8 Designs inkl. Epic!
+## Notes: Advanced Loot Notification - Feed + Floating Text + Epic Popup - 8 Designs!
 ## Author: Claude
-## Version: 5.3.1
+## Version: 6.3.0
 ## SavedVariables: EpicLootFeedDB
 
 # Core System
